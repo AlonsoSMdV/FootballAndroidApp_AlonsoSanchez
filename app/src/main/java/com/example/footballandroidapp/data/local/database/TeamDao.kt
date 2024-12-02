@@ -31,6 +31,6 @@ interface TeamDao {
     @Query("SELECT * FROM team")
     fun observeAll(): Flow<List<TeamE>>
 
-    @Query("SELECT * FROM team t JOIN competition c ON(t.compId == c.id)")
+    @Query("SELECT * FROM team t JOIN competition c ON(:compId == c.id)")
     suspend fun readTeamsInComps(compId: String): List<TeamE>
 }

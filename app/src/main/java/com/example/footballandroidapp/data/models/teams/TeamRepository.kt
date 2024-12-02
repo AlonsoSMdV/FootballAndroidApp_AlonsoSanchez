@@ -1,12 +1,14 @@
 package com.example.footballandroidapp.data.models.teams
 
 import com.example.footballandroidapp.data.local.iLocalDataSource.ITeamLocalDataSource
+import com.example.footballandroidapp.data.models.comps.Competition
 import com.example.footballandroidapp.data.models.comps.toExternal
 import com.example.footballandroidapp.data.remote.teams.ITeamRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class TeamRepository @Inject constructor(
@@ -43,10 +45,19 @@ class TeamRepository @Inject constructor(
     }
 
     override suspend fun readOne(id: Int): Team {
-        TODO("Not yet implemented")
+        val res = remoteData.readOne(id)
+        return if (res.isSuccessful)res.body()!!
+        else Team("0","", "0")
     }
 
     override fun observeAll(): Flow<List<Team>> {
-        TODO("Not yet implemented")
+        refreshLocal()
+        return localData.observeAll()
+    }
+
+    private fun refreshLocal(){
+        runBlocking {
+            val teamRemote = remoteData.readAll()
+        }
     }
 }

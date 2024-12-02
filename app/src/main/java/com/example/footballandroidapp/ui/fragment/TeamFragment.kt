@@ -7,52 +7,48 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.footballandroidapp.ui.viewModel.CompListUiState
-import com.example.footballandroidapp.ui.viewModel.CompetitionViewModel
 import com.example.footballandroidapp.R
 import com.example.footballandroidapp.databinding.FragmentCompetitionListBinding
+import com.example.footballandroidapp.databinding.FragmentTeamListBinding
 import com.example.footballandroidapp.ui.adapter.CompetitionListAdapter
-import com.google.android.material.card.MaterialCardView
+import com.example.footballandroidapp.ui.adapter.TeamListAdapter
+import com.example.footballandroidapp.ui.viewModel.CompListUiState
+import com.example.footballandroidapp.ui.viewModel.TeamListUiState
+import com.example.footballandroidapp.ui.viewModel.TeamViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CompsFragment : Fragment(R.layout.fragment_competition_list) {
-    private lateinit var binding: FragmentCompetitionListBinding
-    private val viewModel: CompetitionViewModel by viewModels()
+class TeamFragment: Fragment(R.layout.fragment_team_list) {
+    private lateinit var binding: FragmentTeamListBinding
+    private val viewModel: TeamViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentCompetitionListBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = FragmentTeamListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = CompetitionListAdapter()
-        binding.compList.adapter = adapter
+        val adapter = TeamListAdapter()
+        binding.teamList.adapter = adapter
 
-        binding.compList.layoutManager = GridLayoutManager(requireContext(), 2)
-
-        //val compCard = view.findViewById<MaterialCardView>(R.id.comp_card)
-
-        //compCard.setOnClickListener { findNavController().navigate(R.id.comps_to_teams) }
 
         lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
                 when (uiState) {
-                    CompListUiState.Loading -> {
+                    TeamListUiState.Loading -> {
                     }
-                    is CompListUiState.Success -> {
-                        adapter.submitList(uiState.compList)
+                    is TeamListUiState.Success -> {
+                        adapter.submitList(uiState.teamList)
                     }
-                    is CompListUiState.Error -> {
+                    is TeamListUiState.Error -> {
                     }
                 }
             }

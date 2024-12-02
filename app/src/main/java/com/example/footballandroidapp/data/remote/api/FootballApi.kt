@@ -23,7 +23,7 @@ interface FootballApi   {
     @GET("teams")
     suspend fun getTeams(): Response<TeamListRaw>
     @GET("teams/{id}")
-    suspend fun getOneTeam(): Response<Team>
+    suspend fun getOneTeam(id : Int): Response<Team>
     @GET("teams")
     suspend fun getTeamsByLeague(@QueryMap filters: Map<String, String>): Response<TeamListRaw>
 
