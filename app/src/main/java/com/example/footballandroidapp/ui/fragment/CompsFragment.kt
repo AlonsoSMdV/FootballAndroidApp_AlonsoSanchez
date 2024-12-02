@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.footballandroidapp.ui.viewModel.CompListUiState
 import com.example.footballandroidapp.ui.viewModel.CompetitionViewModel
 import com.example.footballandroidapp.R
@@ -34,6 +35,8 @@ class CompsFragment : Fragment(R.layout.fragment_competition_list) {
 
         val adapter = CompetitionListAdapter()
         binding.compList.adapter = adapter
+
+        binding.compList.layoutManager = GridLayoutManager(requireContext(), 2)
 
         lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->

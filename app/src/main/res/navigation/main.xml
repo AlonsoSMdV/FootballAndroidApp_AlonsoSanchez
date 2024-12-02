@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/login_to_comps"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/compsFragment" />
         <action
             android:id="@+id/login_to_register"
             app:destination="@id/fragmentRegister" />
@@ -27,7 +27,15 @@
     </fragment>
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/compsFragment"
         android:name="com.example.footballandroidapp.ui.fragment.CompsFragment"
-        tools:layout="@layout/fragment_competition_list" />
+        tools:layout="@layout/fragment_competition_list" >
+        <action
+            android:id="@+id/comps_to_teams"
+            app:destination="@id/teamsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/teamsFragment"
+        tools:layout="@layout/fragment_team_list"/>
 </navigation>

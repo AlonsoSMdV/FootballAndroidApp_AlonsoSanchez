@@ -31,4 +31,7 @@ interface PlayerDao {
     @Query("SELECT * FROM player")
     fun observeAll(): Flow<List<PlayerE>>
 
+    @Query("SELECT * FROM player p JOIN team t ON(p.teamId == t.id)")
+    suspend fun readPlayersByTeam(teamId: String): List<PlayerE>
+
 }
