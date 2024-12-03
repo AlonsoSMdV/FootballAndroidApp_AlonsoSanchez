@@ -22,7 +22,10 @@ class TeamViewModel @Inject constructor(
     val  uiState: StateFlow<TeamListUiState>
         get() = _uiState.asStateFlow()
 
+
     init {
+
+
         viewModelScope.launch {
             withContext(Dispatchers.IO){
                 teamRepo.setStream.collect{
@@ -35,9 +38,18 @@ class TeamViewModel @Inject constructor(
                 }
             }
         }
-        viewModelScope.launch {
+        /*viewModelScope.launch {
             withContext(Dispatchers.IO){
                 teamRepo.readAll()
+            }
+        }*/
+
+    }
+
+    fun observeTeamsByLeague(leagueId:Int) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                teamRepo.readTeamsByLeague(leagueId)
             }
         }
     }

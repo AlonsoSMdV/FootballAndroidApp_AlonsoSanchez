@@ -26,17 +26,79 @@
             app:destination="@id/fragmentLogin" />
     </fragment>
 
-    <fragment
+        <fragment
         android:id="@+id/compsFragment"
         android:name="com.example.footballandroidapp.ui.fragment.CompsFragment"
         tools:layout="@layout/fragment_competition_list" >
         <action
             android:id="@+id/comps_to_teams"
-            app:destination="@id/teamsFragment" />
+            app:destination="@id/teamsFragment">
+            <argument
+                android:name="idComp"
+                app:argType="integer"/>
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/teamsFragment"
         android:name="com.example.footballandroidapp.ui.fragment.TeamFragment"
-        tools:layout="@layout/fragment_team_list"/>
+        tools:layout="@layout/fragment_team_list">
+        <action
+            android:id="@+id/teams_to_comps"
+            app:destination="@id/compsFragment"/>
+        <argument
+            android:name="idComp"
+            app:argType="integer"/>
+
+        <action
+            android:id="@+id/teams_to_players"
+            app:destination="@id/playersFragment">
+            <argument
+                android:name="idTeam"
+                app:argType="integer"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/playersFragment"
+        android:name="com.example.footballandroidapp.ui.fragment.PlayerListFragment"
+        tools:layout="@layout/fragment_player_list">
+        <action
+            android:id="@+id/players_to_teams"
+            app:destination="@id/teamsFragment"/>
+        <argument
+            android:name="idTeam"
+            app:argType="integer"/>
+
+        <action
+            android:id="@+id/players_to_details"
+            app:destination="@id/playerDetails">
+            <argument
+                android:name="idPlayer"
+                app:argType="integer"/>
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/playerDetails"
+        android:name="com.example.footballandroidapp.ui.fragment.PlayerDetailsFragment"
+        tools:layout="@layout/fragment_players_detail">
+
+        <action
+            android:id="@+id/details_to_players"
+            app:destination="@id/playersFragment"/>
+        <argument
+            android:name="idPlayer"
+            app:argType="integer"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileDetails"
+        android:name="com.example.footballandroidapp.ui.fragment.ProfileDetailsFragment"
+        tools:layout="@layout/fragment_profile_details">
+
+    </fragment>
+
 </navigation>

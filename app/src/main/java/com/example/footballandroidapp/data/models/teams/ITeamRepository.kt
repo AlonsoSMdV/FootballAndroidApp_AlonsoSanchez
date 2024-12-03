@@ -9,4 +9,5 @@ interface ITeamRepository {
     suspend fun readTeamsByLeague(leagueId: Int): List<Team>
     suspend fun readOne(id: Int): Team
     fun observeAll(): Flow<List<Team>>
+    fun observeTeamsByLeague(leagueId:Int): Flow<List<Team>>
 }

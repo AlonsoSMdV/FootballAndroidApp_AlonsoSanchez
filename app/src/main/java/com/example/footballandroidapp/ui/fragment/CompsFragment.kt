@@ -14,7 +14,6 @@ import com.example.footballandroidapp.ui.viewModel.CompetitionViewModel
 import com.example.footballandroidapp.R
 import com.example.footballandroidapp.databinding.FragmentCompetitionListBinding
 import com.example.footballandroidapp.ui.adapter.CompetitionListAdapter
-import com.google.android.material.card.MaterialCardView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -40,9 +39,6 @@ class CompsFragment : Fragment(R.layout.fragment_competition_list) {
 
         binding.compList.layoutManager = GridLayoutManager(requireContext(), 2)
 
-        //val compCard = view.findViewById<MaterialCardView>(R.id.comp_card)
-
-        //compCard.setOnClickListener { findNavController().navigate(R.id.comps_to_teams) }
 
         lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->

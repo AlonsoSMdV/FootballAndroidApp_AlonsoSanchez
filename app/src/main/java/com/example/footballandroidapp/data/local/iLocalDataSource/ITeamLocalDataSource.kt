@@ -11,4 +11,5 @@ interface ITeamLocalDataSource {
     suspend fun readTeamsByComp(compId: String): List<Team>
 
     fun observeAll(): Flow<List<Team>>
+    fun observeByLeague(leagueId:Int): Flow<List<Team>>
 }

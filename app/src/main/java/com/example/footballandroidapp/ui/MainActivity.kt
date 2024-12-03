@@ -32,5 +32,19 @@ class MainActivity : AppCompatActivity() {
                 else -> bottomNav.visibility = View.VISIBLE
             }
         }
+
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_comps -> {
+                    navCtrl.navigate(R.id.compsFragment)
+                    true
+                }
+                R.id.navigation_profile -> {
+                    navCtrl.navigate(R.id.profileDetails)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

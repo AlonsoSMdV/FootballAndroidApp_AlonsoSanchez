@@ -28,4 +28,9 @@ class TeamLocalDataSource @Inject constructor(
         return tDao.observeAll().map { localT -> localT.toExternal() }
     }
 
+    override fun observeByLeague(leagueId: Int): Flow<List<Team>> {
+        return tDao.observeByLeague(leagueId).map { localT -> localT.toExternal() }
+
+    }
+
 }

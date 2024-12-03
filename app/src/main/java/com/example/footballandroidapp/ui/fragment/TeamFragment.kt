@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.footballandroidapp.R
 import com.example.footballandroidapp.databinding.FragmentCompetitionListBinding
@@ -23,6 +26,7 @@ import kotlinx.coroutines.launch
 class TeamFragment: Fragment(R.layout.fragment_team_list) {
     private lateinit var binding: FragmentTeamListBinding
     private val viewModel: TeamViewModel by viewModels()
+    private var idComp: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,19 +40,40 @@ class TeamFragment: Fragment(R.layout.fragment_team_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        idComp = arguments?.getInt("idComp")
+        binding = FragmentTeamListBinding.bind(view)
+
+
+        binding.teamsToolbar.apply {
+            setNavigationOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
+
         val adapter = TeamListAdapter()
         binding.teamList.adapter = adapter
 
 
-        lifecycleScope.launch {
-            viewModel.uiState.collect { uiState ->
-                when (uiState) {
-                    TeamListUiState.Loading -> {
-                    }
-                    is TeamListUiState.Success -> {
-                        adapter.submitList(uiState.teamList)
-                    }
-                    is TeamListUiState.Error -> {
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.observeTeamsByLeague(idComp!!)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { uiState ->
+                    when (uiState) {
+                        TeamListUiState.Loading -> {
+                        }
+
+                        is TeamListUiState.Success -> {
+                            adapter.submitList(uiState.teamList)
+                        }
+
+                        is TeamListUiState.Error -> {
+                        }
                     }
                 }
             }
