@@ -4,6 +4,7 @@ import com.example.footballandroidapp.data.local.iLocalDataSource.ITeamLocalData
 import com.example.footballandroidapp.data.models.comps.Competition
 import com.example.footballandroidapp.data.models.comps.toExternal
 import com.example.footballandroidapp.data.remote.teams.ITeamRemoteDataSource
+import com.example.footballandroidapp.data.remote.teams.TeamCreate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -49,6 +50,14 @@ class TeamRepository @Inject constructor(
         val res = remoteData.readOne(id)
         return if (res.isSuccessful)res.body()!!
         else Team("0","", "0")
+    }
+
+    override suspend fun createTeam(team: TeamCreate) {
+        remoteData.createTeam(team)
+    }
+
+    override suspend fun deleteTeam(id: Int) {
+        remoteData.deleteTeam(id)
     }
 
     override fun observeAll(): Flow<List<Team>> {

@@ -10,3 +10,5 @@ data class TeamRawAttributes(val name: String,
                              val compId: Int,
                              val createdAt: String
 )
+
+data class TeamCreate(val attributes: TeamRawAttributes)

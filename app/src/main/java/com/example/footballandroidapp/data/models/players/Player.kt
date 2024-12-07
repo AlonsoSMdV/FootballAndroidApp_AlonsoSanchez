@@ -4,7 +4,7 @@ data class Player (
     val id: String,
     val name: String,
     val firstSurname: String,
-    val secondSurname: String,
+    val secondSurname: String?,
     val birthdate: String,
     val nationality: String,
     val dorsal: Int,

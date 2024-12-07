@@ -15,4 +15,12 @@ class CompsRemoteDataSource @Inject constructor(
     override suspend fun readOne(id: Int): Response<Competition> {
         return compApi.getOneCompetition(id)
     }
+
+    override suspend fun createComp(comp: CompCreate) {
+        return compApi.createComp(comp)
+    }
+
+    override suspend fun deleteComp(id: Int) {
+        return compApi.deleteComp(id)
+    }
 }

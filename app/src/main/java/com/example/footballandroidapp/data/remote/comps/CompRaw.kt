@@ -9,3 +9,5 @@ data class CompRawAttributes(
     val name:String,
     val createdAt: String,
 )
+
+data class CompCreate(val attributes: CompRawAttributes)

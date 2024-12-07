@@ -1,6 +1,7 @@
 package com.example.footballandroidapp.data.models.comps
 
 import com.example.footballandroidapp.data.local.iLocalDataSource.ICompsLocalDataSource
+import com.example.footballandroidapp.data.remote.comps.CompCreate
 import com.example.footballandroidapp.data.remote.comps.ICompRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,6 +34,14 @@ class CompsRepository @Inject constructor(
         val res = remoteData.readOne(id)
         return if (res.isSuccessful)res.body()!!
         else Competition("0","")
+    }
+
+    override suspend fun createComp(comp: CompCreate) {
+        remoteData.createComp(comp)
+    }
+
+    override suspend fun deleteComp(id: Int) {
+        remoteData.deleteComp(id)
     }
 
     override fun observeAll(): Flow<List<Competition>> {
