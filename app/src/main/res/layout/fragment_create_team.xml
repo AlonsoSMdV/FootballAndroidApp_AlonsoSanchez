@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_create_comps">
+    android:id="@+id/fragment_create_team">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/create_comps_toolbar"
+        android:id="@+id/create_team_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -17,50 +17,74 @@
         app:title="Ligas"/>
 
     <TextView
+        android:id="@+id/textCreateTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/textInputLayoutCompName"
+        android:text="Crea un equipo"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toTopOf="@id/textInputLayoutTeamName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_comps_toolbar"
-        android:text="Crea una liga"
-        android:textSize="28dp"/>
+        app:layout_constraintTop_toBottomOf="@id/create_team_toolbar" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutCompName"
+        android:id="@+id/textInputLayoutTeamName"
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginHorizontal="15dp"
         app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
-        app:layout_constraintBottom_toTopOf="@id/create_comp"
+        app:layout_constraintBottom_toTopOf="@id/textInputLayoutTeamNPlayers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/create_comps_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/textCreateTeam"
         android:layout_marginTop="15dp">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextCompName"
+            android:id="@+id/editTextTeamName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre de la liga"
+            android:hint="Nombre del equipo"
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/cardview_dark_background" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutTeamNPlayers"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginHorizontal="15dp"
+        app:boxStrokeColor="@color/black"
+        app:endIconMode="clear_text"
+        app:layout_constraintBottom_toTopOf="@id/create_team"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutTeamName"
+        android:layout_marginTop="5dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextTeamNPlayers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número de jugadores"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/cardview_dark_background" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
     <Button
-        android:id="@+id/create_comp"
+        android:id="@+id/create_team"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginHorizontal="15dp"
         android:text="Crear"
-        app:layout_constraintBottom_toTopOf="@+id/create_comp_bottom_navigation"
+        app:layout_constraintBottom_toTopOf="@+id/create_team_bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayoutCompName" />
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutTeamNPlayers"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/create_comp_bottom_navigation"
+        android:id="@+id/create_team_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_navigation"

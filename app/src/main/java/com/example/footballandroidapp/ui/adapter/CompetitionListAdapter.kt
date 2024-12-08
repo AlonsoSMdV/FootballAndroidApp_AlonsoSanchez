@@ -29,10 +29,13 @@ class CompetitionListAdapter: ListAdapter<Competition, CompetitionListAdapter.Co
             binding.compName.text = competition.name
             binding.compId.text = competition.id
 
+
             binding.compCard.setOnClickListener {
                 val action = CompsFragmentDirections.compsToTeams(competition.id.toInt())
                 it.findNavController().navigate(action)
             }
+
+
         }
     }
 

@@ -47,7 +47,7 @@ class PlayerListFragment : Fragment(R.layout.fragment_player_list) {
 
         binding.playersToolbar.apply {
             setNavigationOnClickListener {
-                findNavController().navigateUp()
+                findNavController().navigate(R.id.players_to_teams)
             }
         }
 

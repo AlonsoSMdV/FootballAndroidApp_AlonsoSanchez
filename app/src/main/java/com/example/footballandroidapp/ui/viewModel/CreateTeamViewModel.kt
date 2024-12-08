@@ -2,9 +2,9 @@ package com.example.footballandroidapp.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.footballandroidapp.data.models.comps.Competition
-import com.example.footballandroidapp.data.models.comps.ICompsRepository
-import com.example.footballandroidapp.data.remote.comps.CompCreate
+import com.example.footballandroidapp.data.models.teams.ITeamRepository
+import com.example.footballandroidapp.data.models.teams.Team
+import com.example.footballandroidapp.data.remote.teams.TeamCreate
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,23 +13,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CreateCompViewModel @Inject constructor(
-    private val compRepo: ICompsRepository
+class CreateTeamViewModel @Inject constructor(
+    private val teamRepo: ITeamRepository
 ): ViewModel() {
     private val _uiState = MutableStateFlow<CreateTeamUiState>(CreateTeamUiState.Loading)
     val uiState: StateFlow<CreateTeamUiState>
         get() = _uiState.asStateFlow()
 
-    fun CreateComp(comp: CompCreate){
+    fun CreateTeam(team: TeamCreate){
         viewModelScope.launch {
-            compRepo.createComp(comp)
+            teamRepo.createTeam(team)
         }
     }
 }
 
-sealed class CreateCompUiState(){
+sealed class CreateTeamUiState(){
     data object Loading: CreateTeamUiState()
-    class Success(val comp: List<Competition>): CreateTeamUiState()
+    class Success(val team: List<Team>): CreateTeamUiState()
     class Error(val message: String): CreateTeamUiState()
 
 }

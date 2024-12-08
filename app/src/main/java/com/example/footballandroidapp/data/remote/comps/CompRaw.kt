@@ -6,8 +6,7 @@ data class CompRaw (
 )
 
 data class CompRawAttributes(
-    val name:String,
-    val createdAt: String,
+    val name:String
 )
 
-data class CompCreate(val attributes: CompRawAttributes)
+data class CompCreate(val data: CompRawAttributes)

@@ -6,7 +6,7 @@ fun TeamRaw.toExternal(): Team {
     return Team(
         id = this.id.toString(),
         name = this.attributes.name,
-        comId = this.attributes.compId.toString()
+        comId = this.attributes.league.toString()
     )
 }
 fun List<TeamRaw>.toExternal():List<Team> = map(TeamRaw::toExternal)

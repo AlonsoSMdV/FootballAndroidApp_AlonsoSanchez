@@ -14,6 +14,7 @@ import com.example.footballandroidapp.ui.viewModel.CompetitionViewModel
 import com.example.footballandroidapp.R
 import com.example.footballandroidapp.databinding.FragmentCompetitionListBinding
 import com.example.footballandroidapp.ui.adapter.CompetitionListAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -39,6 +40,10 @@ class CompsFragment : Fragment(R.layout.fragment_competition_list) {
 
         binding.compList.layoutManager = GridLayoutManager(requireContext(), 2)
 
+        val btnToCreate = view.findViewById<FloatingActionButton>(R.id.button_to_create_comp)
+        btnToCreate.setOnClickListener {
+            findNavController().navigate(R.id.comps_to_create)
+        }
 
         lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
