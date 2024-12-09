@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Implementación del datastore y  el boton del activity_main.xml
         themePreference = ThemePreferences(this)
 
         lifecycleScope.launch {

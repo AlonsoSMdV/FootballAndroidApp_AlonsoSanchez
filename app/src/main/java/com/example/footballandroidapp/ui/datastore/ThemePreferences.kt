@@ -7,6 +7,8 @@ import androidx.datastore.preferences.core.edit
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+
+//DataStore implementado para cambiar el tema de la applicacion movil con un botón, se ha sacado en base a mirar stackoverflow y Android Developers
 val Context.dataStore by preferencesDataStore(name = "theme_preferences")
 class ThemePreferences(private val context: Context) {
     private val THEME_KEY = booleanPreferencesKey("theme_key")
