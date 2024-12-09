@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -49,12 +50,18 @@ class PlayerDetailsFragment: Fragment(R.layout.fragment_players_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val toolbar = view.findViewById<Toolbar>(R.id.players_details_toolbar)
+        toolbar.setOnClickListener {
+            findNavController().navigate(R.id.details_to_players)
+        }
+
         viewModel = ViewModelProvider(this).get(PlayerDetailsViewModel::class.java)
         playerId = arguments?.getInt("idPlayer")
         viewModel.getPlayerDetails(playerId!!)
         viewModel.player.observe(viewLifecycleOwner, Observer { player ->
             getPlayer(player)
         })
+
 
 
     }
