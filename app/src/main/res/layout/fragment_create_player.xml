@@ -32,7 +32,6 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginHorizontal="15dp"
-        app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@id/textInputLayoutPlayerFirstSurname"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +44,6 @@
             android:layout_height="wrap_content"
             android:hint="Nombre del jugador"
             android:inputType="text"
-            android:textColor="@color/black"
             android:textColorHint="@color/cardview_dark_background" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +52,6 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginHorizontal="15dp"
-        app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@id/textInputLayoutPlayerSecondSurname"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +64,6 @@
             android:layout_height="wrap_content"
             android:hint="Primer apellido"
             android:inputType="text"
-            android:textColor="@color/black"
             android:textColorHint="@color/cardview_dark_background" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +72,6 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginHorizontal="15dp"
-        app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@id/textInputLayoutPlayerNationality"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +84,6 @@
             android:layout_height="wrap_content"
             android:hint="Segundo apellido"
             android:inputType="text"
-            android:textColor="@color/black"
             android:textColorHint="@color/cardview_dark_background" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,7 +92,6 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginHorizontal="15dp"
-        app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@id/textInputLayoutPlayerDorsal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +104,6 @@
             android:layout_height="wrap_content"
             android:hint="Nacionalidad"
             android:inputType="text"
-            android:textColor="@color/black"
             android:textColorHint="@color/cardview_dark_background" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,7 +112,6 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginHorizontal="15dp"
-        app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@id/textInputLayoutPlayerBirthdate"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +124,6 @@
             android:layout_height="wrap_content"
             android:hint="Dorsal"
             android:inputType="text"
-            android:textColor="@color/black"
             android:textColorHint="@color/cardview_dark_background" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,7 +132,6 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginHorizontal="15dp"
-        app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@id/textInputLayoutPlayerPosition"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +144,6 @@
             android:layout_height="wrap_content"
             android:hint="Fecha de nacimiento(AA-MM-DD)"
             android:inputType="text"
-            android:textColor="@color/black"
             android:textColorHint="@color/cardview_dark_background" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,7 +152,6 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginHorizontal="15dp"
-        app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@id/create_player"
         app:layout_constraintEnd_toEndOf="parent"
@@ -177,7 +164,6 @@
             android:layout_height="wrap_content"
             android:hint="Posicion"
             android:inputType="text"
-            android:textColor="@color/black"
             android:textColorHint="@color/cardview_dark_background" />
     </com.google.android.material.textfield.TextInputLayout>
 

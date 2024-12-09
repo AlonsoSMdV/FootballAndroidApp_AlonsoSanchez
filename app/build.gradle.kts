@@ -46,6 +46,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation ("androidx.datastore:datastore-preferences:1.1.1")
+    implementation ("androidx.datastore:datastore-preferences-rxjava2:1.1.1")
+    implementation ("androidx.datastore:datastore-preferences-rxjava3:1.1.1")
     implementation ("androidx.datastore:datastore:1.1.1")
     implementation("com.google.dagger:hilt-android:2.51.1")
     implementation(libs.androidx.navigation.fragment)

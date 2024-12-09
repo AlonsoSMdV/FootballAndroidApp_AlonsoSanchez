@@ -31,7 +31,6 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:layout_marginHorizontal="15dp"
-        app:boxStrokeColor="@color/black"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@id/create_comp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +43,6 @@
             android:layout_height="wrap_content"
             android:hint="Nombre de la liga"
             android:inputType="text"
-            android:textColor="@color/black"
             android:textColorHint="@color/cardview_dark_background" />
     </com.google.android.material.textfield.TextInputLayout>
 
