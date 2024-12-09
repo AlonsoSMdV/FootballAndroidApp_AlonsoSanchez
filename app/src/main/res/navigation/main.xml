@@ -104,6 +104,14 @@
             app:argType="integer"/>
 
         <action
+            android:id="@+id/players_to_create"
+            app:destination="@id/createPlayerFragment">
+            <argument
+                android:name="idTeamSelected"
+                app:argType="integer"/>
+        </action>
+
+        <action
             android:id="@+id/players_to_details"
             app:destination="@id/playerDetails">
             <argument
@@ -111,6 +119,18 @@
                 app:argType="integer"/>
         </action>
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/createPlayerFragment"
+        android:name="com.example.footballandroidapp.ui.fragment.CreatePlayerFragment"
+        tools:layout="@layout/fragment_create_player">
+        <action
+            android:id="@+id/create_to_players"
+            app:destination="@id/playersFragment"/>
+        <argument
+            android:name="idTeamSelected"
+            app:argType="integer"/>
     </fragment>
 
     <fragment
@@ -131,7 +151,9 @@
         android:id="@+id/profileDetails"
         android:name="com.example.footballandroidapp.ui.fragment.ProfileDetailsFragment"
         tools:layout="@layout/fragment_profile_details">
-
+        <action
+            android:id="@+id/logout"
+            app:destination="@id/fragmentLogin"/>
     </fragment>
 
 </navigation>

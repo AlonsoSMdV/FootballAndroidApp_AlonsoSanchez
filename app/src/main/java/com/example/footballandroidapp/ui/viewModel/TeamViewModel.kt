@@ -22,7 +22,14 @@ class TeamViewModel @Inject constructor(
     val  uiState: StateFlow<TeamListUiState>
         get() = _uiState.asStateFlow()
 
-
+    fun deleteTeam(teamId: Int, leagueId: Int){
+        viewModelScope.launch {
+            teamRepo.deleteTeam(teamId)
+            withContext(Dispatchers.IO){
+                teamRepo.readTeamsByLeague(leagueId)
+            }
+        }
+    }
     init {
 
 

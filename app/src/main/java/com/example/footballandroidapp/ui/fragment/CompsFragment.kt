@@ -35,7 +35,7 @@ class CompsFragment : Fragment(R.layout.fragment_competition_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = CompetitionListAdapter()
+        val adapter = CompetitionListAdapter(viewModel)
         binding.compList.adapter = adapter
 
         binding.compList.layoutManager = GridLayoutManager(requireContext(), 2)

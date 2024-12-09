@@ -11,11 +11,12 @@ import com.example.footballandroidapp.R
 import com.example.footballandroidapp.data.models.comps.Competition
 import com.example.footballandroidapp.databinding.CompetitionItemBinding
 import com.example.footballandroidapp.ui.fragment.CompsFragmentDirections
+import com.example.footballandroidapp.ui.viewModel.CompetitionViewModel
 
-class CompetitionListAdapter: ListAdapter<Competition, CompetitionListAdapter.CompetitionViewHolder>(DiffCallback()) {
+class CompetitionListAdapter(private val viewModel: CompetitionViewModel): ListAdapter<Competition, CompetitionListAdapter.CompetitionViewHolder>(DiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompetitionViewHolder {
         val binding = CompetitionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CompetitionViewHolder(binding)
+        return CompetitionViewHolder(binding, viewModel)
     }
 
     override fun onBindViewHolder(holder: CompetitionViewHolder, position: Int) {
@@ -23,12 +24,15 @@ class CompetitionListAdapter: ListAdapter<Competition, CompetitionListAdapter.Co
         holder.bind(competition)
     }
 
-    class CompetitionViewHolder(private val binding: CompetitionItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CompetitionViewHolder(private val binding: CompetitionItemBinding, private val viewModel: CompetitionViewModel) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(competition: Competition) {
             binding.compName.text = competition.name
             binding.compId.text = competition.id
 
+            binding.deleteCompButton.setOnClickListener{
+                viewModel.deleteComp(competition.id.toInt())
+            }
 
             binding.compCard.setOnClickListener {
                 val action = CompsFragmentDirections.compsToTeams(competition.id.toInt())

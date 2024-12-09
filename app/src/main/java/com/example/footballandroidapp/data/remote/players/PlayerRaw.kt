@@ -13,7 +13,7 @@ data class PlayerRawAttributes(
     val dorsal: Int,
     val birthdate: String,
     val position: String,
-    val teamId: Int
+    val team: Int
 )
 
-data class PlayerCreate(val attributes: PlayerRawAttributes)
+data class PlayerCreate(val data: PlayerRawAttributes)

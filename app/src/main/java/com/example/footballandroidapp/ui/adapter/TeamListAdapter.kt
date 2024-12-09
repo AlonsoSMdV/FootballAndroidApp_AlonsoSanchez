@@ -10,14 +10,15 @@ import com.example.footballandroidapp.data.models.teams.Team
 import com.example.footballandroidapp.databinding.TeamItemBinding
 import com.example.footballandroidapp.ui.fragment.CompsFragmentDirections
 import com.example.footballandroidapp.ui.fragment.TeamFragmentDirections
+import com.example.footballandroidapp.ui.viewModel.TeamViewModel
 
-class TeamListAdapter: ListAdapter<Team, TeamListAdapter.TeamViewHolder>(DiffCallback()) {
+class TeamListAdapter(private val viewModel: TeamViewModel, private val idComp: Int): ListAdapter<Team, TeamListAdapter.TeamViewHolder>(DiffCallback()) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): TeamViewHolder {
         val binding = TeamItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TeamViewHolder(binding)
+        return TeamViewHolder(binding, viewModel, idComp)
     }
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
@@ -25,10 +26,12 @@ class TeamListAdapter: ListAdapter<Team, TeamListAdapter.TeamViewHolder>(DiffCal
         holder.bind(team)
     }
 
-    class TeamViewHolder(private val binding: TeamItemBinding): RecyclerView.ViewHolder(binding.root){
+    class TeamViewHolder(private val binding: TeamItemBinding, private val viewModel: TeamViewModel, private val compId: Int): RecyclerView.ViewHolder(binding.root){
         fun bind(team: Team){
             binding.teamName.text = team.name
-
+            binding.deleteTeamButton.setOnClickListener {
+                viewModel.deleteTeam(team.id.toInt(), compId)
+            }
             binding.teamCard.setOnClickListener {
                 val action = TeamFragmentDirections.teamsToPlayers(team.id.toInt())
                 it.findNavController().navigate(action)

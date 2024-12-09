@@ -21,6 +21,14 @@ class CompetitionViewModel @Inject constructor(
     val  uiState: StateFlow<CompListUiState>
         get() = _uiState.asStateFlow()
 
+    fun deleteComp(comId: Int){
+        viewModelScope.launch {
+            compRepo.deleteComp(comId)
+            withContext(Dispatchers.IO){
+                compRepo.readAll()
+            }
+        }
+    }
     init {
         viewModelScope.launch {
             withContext(Dispatchers.IO){

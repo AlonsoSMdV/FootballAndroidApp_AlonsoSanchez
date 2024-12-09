@@ -13,13 +13,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.footballandroidapp.R
 import com.example.footballandroidapp.databinding.FragmentPlayerListBinding
-import com.example.footballandroidapp.databinding.FragmentTeamListBinding
 import com.example.footballandroidapp.ui.adapter.PlayerListAdapter
-import com.example.footballandroidapp.ui.adapter.TeamListAdapter
 import com.example.footballandroidapp.ui.viewModel.PlayerListUiState
 import com.example.footballandroidapp.ui.viewModel.PlayerListViewModel
-import com.example.footballandroidapp.ui.viewModel.TeamListUiState
-import com.example.footballandroidapp.ui.viewModel.TeamViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -43,7 +40,7 @@ class PlayerListFragment : Fragment(R.layout.fragment_player_list) {
 
         idTeam = arguments?.getInt("idTeam")
         binding = FragmentPlayerListBinding.bind(view)
-
+        val idTeamSelected = idTeam!!
 
         binding.playersToolbar.apply {
             setNavigationOnClickListener {
@@ -51,12 +48,16 @@ class PlayerListFragment : Fragment(R.layout.fragment_player_list) {
             }
         }
 
-        val adapter = PlayerListAdapter()
+        val adapter = PlayerListAdapter(viewModel, idTeamSelected)
         binding.playerList.adapter = adapter
 
         binding.playerList.layoutManager = GridLayoutManager(requireContext(), 3)
 
-
+        val btnToCreate = view.findViewById<FloatingActionButton>(R.id.button_to_create_player)
+        btnToCreate.setOnClickListener {
+            val action = PlayerListFragmentDirections.playersToCreate(idTeamSelected)
+            it.findNavController().navigate(action)
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -67,16 +68,19 @@ class PlayerListFragment : Fragment(R.layout.fragment_player_list) {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { uiState ->
-                    when (uiState) {
-                        PlayerListUiState.Loading -> {
+                    when(uiState){
+                        PlayerListUiState.Loading ->{
+
                         }
 
-                        is PlayerListUiState.Success -> {
+                        is PlayerListUiState.Success->{
                             adapter.submitList(uiState.playerList)
                         }
 
-                        is PlayerListUiState.Error -> {
+                        is PlayerListUiState.Error->{
+
                         }
+
                     }
                 }
             }

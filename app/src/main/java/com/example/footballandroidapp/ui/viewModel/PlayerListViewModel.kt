@@ -21,7 +21,14 @@ class PlayerListViewModel @Inject constructor(
     val  uiState: StateFlow<PlayerListUiState>
         get() = _uiState.asStateFlow()
 
-
+    fun deletePlayer(playerId: Int, teamId: Int){
+        viewModelScope.launch {
+            playerRepo.deletePlayer(playerId)
+            withContext(Dispatchers.IO){
+                playerRepo.readPlayersByTeam(teamId)
+            }
+        }
+    }
     init {
 
 

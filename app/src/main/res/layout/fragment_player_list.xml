@@ -43,8 +43,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
-     android:id="@+id/player_create_button"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+     android:id="@+id/button_to_create_player"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:layout_gravity="bottom|end"
@@ -54,5 +54,5 @@
      app:layout_constraintBottom_toTopOf="@id/player_bottom_navigation"
      app:layout_constraintEnd_toEndOf="parent"
      android:src="@drawable/ic_add"
-     />-->
+     />
 </androidx.constraintlayout.widget.ConstraintLayout>

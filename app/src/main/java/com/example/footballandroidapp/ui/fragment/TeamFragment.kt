@@ -58,7 +58,7 @@ class TeamFragment: Fragment(R.layout.fragment_team_list) {
             it.findNavController().navigate(action)
         }
 
-        val adapter = TeamListAdapter()
+        val adapter = TeamListAdapter(viewModel, compSelected)
         binding.teamList.adapter = adapter
 
 

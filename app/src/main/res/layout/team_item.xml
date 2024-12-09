@@ -20,7 +20,7 @@
             <ImageView
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:src="@drawable/ic_person" />
+                android:src="@drawable/ic_no_image" />
 
             <TextView
                 android:id="@+id/team_name"
@@ -33,6 +33,13 @@
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+    <Button
+        android:id="@+id/delete_team_button"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:backgroundTint="@color/md_theme_error"
+        android:text="Borrar"/>
 
 
 

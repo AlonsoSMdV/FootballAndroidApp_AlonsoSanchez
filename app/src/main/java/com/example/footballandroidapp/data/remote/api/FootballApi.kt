@@ -44,7 +44,7 @@ interface FootballApi   {
     @GET("players")
     suspend fun getPlayers(): Response<PlayerListRaw>
     @GET("players/{id}")
-    suspend fun getOnePlayer(id : Int): Response<Player>
+    suspend fun getOnePlayer(@Path("id")id : Int): Response<Player>
     @GET("players")
     suspend fun getPlayersByTeam(@QueryMap filters: Map<String, String>): Response<PlayerListRaw>
     @POST("players")

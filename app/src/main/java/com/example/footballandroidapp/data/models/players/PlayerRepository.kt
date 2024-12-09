@@ -36,13 +36,13 @@ class PlayerRepository @Inject constructor(
             "filters[team][id][\$eq]" to teamId.toString()
         )
         val res = remoteData.readPlayersByTeam(filters)
-        val teams = _state.value.toMutableList()
+        val players = _state.value.toMutableList()
         if (res.isSuccessful){
-            val teamList = res.body()?.data ?: emptyList()
-            _state.value = teamList.toExternal()
+            val playerList = res.body()?.data ?: emptyList()
+            _state.value = playerList.toExternal()
         }
-        else _state.value = teams
-        return teams
+        else _state.value = players
+        return players
     }
 
     override suspend fun readOne(id: Int): Player {
