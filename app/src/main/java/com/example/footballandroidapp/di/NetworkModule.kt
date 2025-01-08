@@ -28,7 +28,7 @@ object AppModule {
     @Provides
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://footballcompsstrapi.onrender.com/api/")
+            .baseUrl("https://footballcompsstrapiv2.onrender.com/api/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
